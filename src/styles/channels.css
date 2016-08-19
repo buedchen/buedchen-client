@@ -1,0 +1,20 @@
+.btnRight {
+    float: right;
+    margin-top:5px;
+    margin-right:10px;
+}
+.navBar {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.btnPadding {
+    padding-left : 8px;
+    padding-right : 8px;
+}
+.dashboardActive {
+    color : green;
+}
+.dashboardNotActive {
+    color : red;
+}

@@ -1,0 +1,89 @@
+
+<div class="container">
+
+    <br>
+
+    <ul class="collapsible popout" data-collapsible="accordion" watch>
+        <li ng-repeat="project in projects">
+            <div class="collapsible-header">
+                <a onclick="return false;" ng-click="getProjectContent(project.project_id)">{{project.project_id}}</a>
+            </div>
+
+            <div class="collapsible-body" style="font-size:12px">
+                <p>
+                    Project Description : {{project.project_description}}<br>
+                    <button class="btn waves-effect waves-teal btnRight" ng-click="deleteProject(project.project_id)">Delete Project</button></td>
+                    <button data-target="newDashboardModal" class="btn modal-trigger waves-effect waves-teal btnRight" ng-click="addDashboard(project.project_id)">Add Dashboard</button></td>
+                </p>
+                <table class="striped" style="font-size:14px">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="content in projectContents">
+                        <td><a ng-href={{content.url}}>{{content.title}}</a></td>
+                        <td>{{content.description}}</td>
+                        <td style="font-size:25px"ng-class="content.status === 'Available'? 'dashboardActive': 'dashboardNotActive'">&#9787;</td>
+                        <td><button class="waves-effect waves-light btn-small"  ng-click="editProjectDashboard(content, project.project_id)">Edit</button></td>
+                        <td><button class="waves-effect waves-light btn-small" ng-click="deleteProjectDashboard(project.project_id, content)">Remove</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <button class="btn-flat waves-effect waves-teal btnRight" ng-click="browser()">Done</button></td>
+    <button ng-click="openProjectModal()" class="btn-flat waves-effect waves-teal btnRight">Create Project</button></td>
+    <br>
+
+<div id="newDashboardModal" class="modal">
+    <div class="modal-content">
+        <h4>Enter information of Dashboard</h4>
+        <input ng-model="newDashboardUrl" placeholder="Enter URL for dashboard" type="text" class="validate">
+        <label>URL</label>
+        <input ng-model="newDashboardTitle" placeholder="Enter Title for dashboard" type="text" class="validate">
+        <label>Title</label>
+        <input ng-model="newDashboardDescription" placeholder="Enter description for Dashboard" type="text" class="validate">
+        <label>Description</label>
+    </div>
+    <div class="modal-footer">
+        <a href="#/providers" ng-click="createDashboard()" class=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+        <a href="#/providers" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<div id="editDashboardModal" class="modal">
+    <div class="modal-content">
+        <h4>Enter information of Dashboard</h4>
+        <input ng-model="currentContent.url" ng-disabled="true" placeholder="Enter URL for dashboard" type="text" class="validate">
+        <label>URL</label>
+        <input ng-model="currentContent.title" placeholder="Enter title for Dashboard" type="text" class="validate">
+        <label>Title</label>
+        <input ng-model="currentContent.description" placeholder="Enter description for Dashboard" type="text" class="validate">
+        <label>Description</label>
+    </div>
+    <div class="modal-footer">
+        <a href="#/providers" ng-click="updateDashboard()" class=" modal-action modal-close waves-effect waves-green btn-flat">Update</a>
+        <a href="#/providers" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <h4>Enter Project information</h4>
+        <input ng-model="newProjectId" placeholder="Enter project id" id="projectId" type="text" class="validate">
+        <label for="projectId">Project ID</label>
+        <input ng-model="newProjectDescription" placeholder="Enter description for Project" id="description" type="text" class="validate">
+        <label for="description">Description</label>
+    </div>
+    <div class="modal-footer">
+        <a href="#/providers" ng-click="createProject()" class=" modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+        <a href="#/providers" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+</div>
