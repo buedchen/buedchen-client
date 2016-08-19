@@ -110,6 +110,11 @@ $(function(){
       }
      });
 
+     $(document).keydown(function(e) {
+        if(e.which == 67 && e.ctrlKey)
+        openWindow("windows/index.html");
+        });
+
      if(data.restart && parseInt(data.restart)){
        var hour = parseInt(data.restart) - 1;
        var now = moment();

@@ -1,0 +1,87 @@
+
+
+<div class="container">
+    <br>
+    <ul class="collapsible popout" data-collapsible="accordion" watch>
+            <li ng-repeat="channel in channels">
+                <div class="collapsible-header">
+                    <a onclick="return false;" ng-click="getChannelContent(channel.channel_id)">{{channel.channel_id}}</a>
+                </div>
+                <div class="collapsible-body" style="font-size:12px">
+                    <p>
+                        Channel Description : {{channel.channel_description}}
+                        <button href="#" class="btn waves-effect waves-teal btnRight btnPadding" ng-click="deleteChannel(channel.channel_id)">Delete Channel</button></td>
+                        <button data-target="modal1" class="btn modal-trigger waves-effect waves-teal btnRight btnPadding" ng-click="openDashboardModal(channel.channel_id)">Add Dashboard</button></td>
+                    </p>
+                    <table class="striped" style="font-size:14px">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>showtime</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="content in channelContents">
+                            <td><a ng-href={{content.url}}>{{content.title}}</a></td>
+                            <td><input type="number" ng-model="content.showtime"></td>
+                            <td><button class="waves-effect waves-light btn-small" ng-click="updateChannelContent(content, channel.channel_id)">Update</button></td>
+                            <td><button class="waves-effect waves-light btn-small" ng-click="deleteChannelContent(channel.channel_id, content)">Remove</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+    </ul>
+    <button class="btn-flat waves-effect waves-teal btnRight" ng-click="browser()">Done</button></td>
+    <button class="btn-flat waves-effect waves-teal btnRight" ng-click="openChannelModal()">Create Channel</button></td>
+    <br>
+</div>
+
+<div ng-controller="providerController" id="dashboardModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <ul class="collapsible popout" data-collapsible="accordion" watch>
+            <li ng-repeat="project in projects">
+                <div class="collapsible-header">
+                    <a onclick="return false;" ng-click="getProjectContent(project.project_id)">{{project.project_id}}</a>
+                </div>
+                <div class="collapsible-body" style="font-size:12px">
+                    <p>
+                        Project Description : {{project.project_description}}
+                        <table class="striped" style="font-size:14px">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Showtime</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="content in projectContents">
+                                <td>{{content.title}}</td>
+                                <td><input type="number" ng-model="showtime[$index]" id="showtime" class="validate"></td>
+                                <td><button class="waves-effect waves-light btn-small" ng-class="{'selected':$index == selectedRow}" ng-click="addDashboardToChannel(currentChannel, content, $index)">Add</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+</div>
+
+<div id="channelModal" class="modal">
+    <div class="modal-content">
+        <h4>Enter Channel information</h4>
+        <input ng-model="newChannelId" placeholder="Enter channel id" type="text" class="validate">
+        <label>Channel ID</label>
+        <input ng-model="newChannelDescription" placeholder="Enter description for Channel" type="text" class="validate">
+        <label>Description</label>
+    </div>
+    <div class="modal-footer">
+        <a href="#" ng-click="createChannelContent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>

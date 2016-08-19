@@ -11,13 +11,16 @@ $(function(){
         hex += randomPool[i].toString(16);
     }
     deviceid = hex;
-    remotescheduleurl = 'wss://oprdproaf300.corp.intuit.net/ws/schedule';
-    password = 'idea';
+    remotescheduleurl = 'ws://localhost:8080/ws/schedule';
+    serverUrl = 'http://localhost:8080';
+    password = 'admin';
     chrome.storage.local.set({'deviceid':deviceid});
     chrome.storage.local.set({'remotescheduleurl': remotescheduleurl});
+    chrome.storage.local.set({'serverUrl': serverUrl});
     chrome.storage.local.set({'password':password});
     data.deviceid = deviceid;
     data.remotescheduleurl = remotescheduleurl;
+    data.serverUrl = serverUrl;
     data.password = password;
   }
 
@@ -27,6 +30,10 @@ $(function(){
 
   if(data.remotescheduleurl)
     $("#remote-schedule-url").val(data.remotescheduleurl).siblings('label').addClass('active');
+
+
+  if(data.serverUrl)
+    $("#server-url").val(data.serverUrl).siblings('label').addClass('active');
 
   if(data.local) {
     $("#local").prop("checked",true);
@@ -94,6 +101,7 @@ $(function(){
     var password = $("#password").val();
     var passwordConfirm = $("#confirm_password").val();
     var remotescheduleurl = $("#remote-schedule-url").val();
+    var serverUrl = $("#server-url").val();
     var resetcache = $('#reset-cache').is(':checked');
 
     if(reset){
@@ -136,6 +144,8 @@ $(function(){
       }
       if(remotescheduleurl) chrome.storage.local.set({'remotescheduleurl':remotescheduleurl});
       else chrome.storage.local.remove('remotescheduleurl');
+      if(serverUrl) chrome.storage.local.set({'serverUrl':serverUrl});
+      else chrome.storage.local.remove('serverUrl');
       if(hidecursor) chrome.storage.local.set({'hidecursor':hidecursor});
       else chrome.storage.local.remove('hidecursor');
       if(disablecontextmenu) chrome.storage.local.set({'disablecontextmenu':disablecontextmenu});

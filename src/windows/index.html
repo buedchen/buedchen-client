@@ -1,0 +1,40 @@
+
+<html ng-app="channelsModule">
+
+<head>
+    <title>Buedchen TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/channels.css">
+    <link type="text/css" rel="stylesheet" href="../www/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../www/css/shared.css"  media="screen,projection"/>
+    <script language="javascript" type="text/javascript" src="../www/js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../www/js/materialize.min.js"></script>
+    <script src="../www/js/angular.min.js"> </script>
+    <script src="../www/js/angular-route.js"> </script>
+    <script src="../app.module.js"></script>
+    <script src="../scripts/channels.js"></script>
+    <script src="../scripts/providers.js"></script>
+    <style type="text/css">body,html{overflow:auto}</style>
+</head>
+
+<body>
+    <div class="w3-container">
+        <div class=" center navBar">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" style="font-size:x-large" class="center">Buedchen TV</a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="#/channels">Channels</a></li>
+                        <li><a href="#/providers">Providers</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div>
+           <ng-view></ng-view>
+        </div>
+
+    </div>
+</body>
+</html>

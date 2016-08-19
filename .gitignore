@@ -1,0 +1,6 @@
+*.DS_Store
+.settings
+.classpath
+.idea
+*.iml
+workspace.xml
