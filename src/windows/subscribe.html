@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Channel Subscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/channels.css">
+    <link type="text/css" rel="stylesheet" href="../www/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../www/css/shared.css"  media="screen,projection"/>
+    <script language="javascript" type="text/javascript" src="../www/js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../www/js/materialize.min.js"></script>
+    <script src="../www/js/angular.min.js"> </script>
+    <script src="../scripts/subscribe.js"></script>
+</head>
+<body>
+<div class="w3-container" data-ng-app="subscriptionModule" data-ng-controller="subscriptionController">
+    <div class=" center navBar">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" style="font-size:x-large" class="center">Channel Subscription</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <br>
+        <h5> Select Channel and then click 'Subscribe'</h5>
+        <form>
+           <div ng-repeat="channel in channels">
+                <p>
+                    <input type="radio" ng-model="$parent.channelId"  id="channel_{{$index}}" ng-value="channel.channel_id" name="channel">
+                    <label for="channel_{{$index}}">{{channel.channel_id}}</label>
+                </p>
+           </div>
+        </form>
+        <button href="#" class="btn waves-effect waves-teal btnRight btnPadding" ng-click="subscribeChannel()">Subscribe</button></td>
+        <button href="#" class="btn waves-effect waves-teal btnRight btnPadding" ng-click="browser()">Done</button></td>
+    </div>
+</div>
+</body>
+</html>

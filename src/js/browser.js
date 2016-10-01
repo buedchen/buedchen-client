@@ -115,6 +115,11 @@ $(function(){
         openWindow("windows/index.html");
         });
 
+     $(document).keydown(function(e) {
+        if(e.which == 73 && e.ctrlKey)
+        openWindow("windows/subscribe.html");
+        });
+
      if(data.restart && parseInt(data.restart)){
        var hour = parseInt(data.restart) - 1;
        var now = moment();
